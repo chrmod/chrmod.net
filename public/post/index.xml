@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on chrmod.net</title>
+    <link>https://chrmod.net/post/</link>
+    <description>Recent content in Posts on chrmod.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 29 May 2016 13:46:22 +0200</lastBuildDate>
+    <atom:link href="https://chrmod.net/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>welcome</title>
+      <link>https://chrmod.net/post/welcome/</link>
+      <pubDate>Sun, 29 May 2016 13:46:22 +0200</pubDate>
+      
+      <guid>https://chrmod.net/post/welcome/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
