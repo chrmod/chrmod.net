@@ -57,3 +57,9 @@ Here is that damned screenshot which started all this mess:
 {{< figure src="/hello-world/desktop-screenshot-2016-05-29.png" title="gruvbox theme for i3wm, vim and tmux" >}}
 
 What is on it, is a topic for another post!
+
+# Day 0 update
+
+Just after publishing this blog post, I've tried to share the screenshot on unixporn. And.. no success here. Today I've learned that Reddit submitted URLs must come from a short list of approved domains (imgur.com is obviously on it). The whole reason that pushed me to start a blog was invalid.
+
+At least I have website now!
