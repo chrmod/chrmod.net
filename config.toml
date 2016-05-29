@@ -1,0 +1,4 @@
+baseurl = "https://chrmod.net/"
+languageCode = "en-us"
+title = "chrmod.net"
+theme = "base16"
