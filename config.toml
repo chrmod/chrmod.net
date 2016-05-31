@@ -1,5 +1,5 @@
 baseurl = "https://chrmod.net/"
 languageCode = "en-us"
 title = "chrmod.net"
-theme = "base16"
+theme = "gruvbox"
 googleAnalytics = "UA-78513214-1"
