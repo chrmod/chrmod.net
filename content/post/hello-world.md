@@ -18,10 +18,10 @@ I really wanted to start writing for quite some time now, but you know how it is
 
 ## Trigger
 
-It was a very simple thing that I wanted to do (it often starts like that) - to post a picture online, so other people can see how my linux destkop environment looks like atm. Easy you would think, well, sure it is simple for some, not for me.. I've got an image, a place to post it ([unixporn](https://www.reddit.com/r/unixporn) subreddit), and there was only one problem, reddit is not hosting images - it wants an URL.
+It was a very simple thing that I wanted to do (it often starts like that) - to post a picture online, so other people can see how my Linux desktop environment looks like atm. Easy you would think, well, sure it is simple for some, not for me.. I've got an image, a place to post it ([unixporn](https://www.reddit.com/r/unixporn) subreddit), and there was only one problem, Reddit is not hosting images - it wants an URL.
 
-OK. There are many free image hosting, most people on unixporn use imgur.com, but that would be too easy.
-Instead I decided to finally kick off own website in a form of a blog. After 24 hours, here we are.
+OK. There are many free image hostings, most people on unixporn use imgur.com, but that would be too easy.
+Instead I decided to finally kick off my own website in a form of a blog. After 24 hours, here we are.
 
 ## Technology
 
@@ -29,26 +29,26 @@ This would not be a tech blog if I wouldn't explain what, how and why I did it.
 
 ### Requirements
 
-First of all, I didn't really want to pay for anything (at least not in the beginning). chrmod.net is suppose to be a blog for sharing stuff, not earning money.
+First of all, I didn't really want to pay for anything (at least not in the beginning). chrmod.net is supposed to be a blog for sharing stuff, not earning money.
 
-Second, with traditional approach (which I assume is wordpress + mysql + apache, etc), there is so much stuff to care about and to maintain.
+Second, with traditional approach (which I assume is WordPress + MySQL + Apache, etc.), there is so much stuff to care about and to maintain.
 
 Third, I do like to write code and tend to avoid CMSs as much as possible.
 
 ### Solution
 
-The obvious way to go was to use some kind of static page generator and host it on github as apparently we're able to use for free for personal stuff (citing chastell on [this one](https://twitter.com/chastell/status/736926755999617024))
+The obvious way to go was to use some kind of static page generator and host it on GitHub as apparently we're able to use for free for personal stuff (citing chastell on [this one](https://twitter.com/chastell/status/736926755999617024)).
 
-Also I really wanted to host my stuff over https. I knew there is letsencrypt, but to use it with github pages didn't look that easy or even possible.
+Also I really wanted to host my stuff over HTTPS. I knew there is letsencrypt, but to use it with GitHub Pages didn't look that easy or even possible.
 
-Fortunately I found kludsec that not only provide a free CDN but they also issued SSL certificate from letsencrypt automatically! Amazing!
+Fortunately I found Kloudsec, which not only provides a free CDN but also issues SSL certificate from letsencrypt automatically! Amazing!
 
 Summarizing the setup is:
 
-* hosting: [github pages](https://pages.github.com/)
-* CDN: [kludsec](https://kloudsec.com/)
+* hosting: [GitHub Pages](https://pages.github.com/)
+* CDN: [Kloudsec](https://kloudsec.com/)
 * SSL: [letsencrypt](https://letsencrypt.org/)
-* engine: [hugo](http://gohugo.io/)
+* engine: [Hugo](http://gohugo.io/)
 
 ## Ending note
 
