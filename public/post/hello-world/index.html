@@ -5,7 +5,7 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="">
-<meta name="generator" content="Hugo 0.16-DEV" />
+<meta name="generator" content="Hugo 0.24.1" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://chrmod.net/css/style.css" type="text/css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" type="text/css">
@@ -44,53 +44,53 @@
 
 <p>Will try to go fast with this one as it&rsquo;s my first blog post ever.</p>
 
-<h1 id="hello-world:aa77bbfd89a7b0ff10def205b9c08d51">Hello World!</h1>
+<h1 id="hello-world">Hello World!</h1>
 
 <p>Guess that&rsquo;s the phrase, that most developers use when they start a new project, right?</p>
 
-<h2 id="yet-another-dev-blog:aa77bbfd89a7b0ff10def205b9c08d51">Yet another dev blog</h2>
+<h2 id="yet-another-dev-blog">Yet another dev blog</h2>
 
 <p>Yes, chrmod.net is going to be yet another blog by some kind of developer. You can expect to find here code/configuration snippets, tips for my favorite tools, or solutions to tech problems that I found surprising.</p>
 
 <p>I really wanted to start writing for quite some time now, but you know how it is, beginnings are hard. But finally something has changed.</p>
 
-<h2 id="trigger:aa77bbfd89a7b0ff10def205b9c08d51">Trigger</h2>
+<h2 id="trigger">Trigger</h2>
 
-<p>It was a very simple thing that I wanted to do (it often starts like that) - to post a picture online, so other people can see how my linux destkop environment looks like atm. Easy you would think, well, sure it is simple for some, not for me.. I&rsquo;ve got an image, a place to post it (<a href="https://www.reddit.com/r/unixporn">unixporn</a> subreddit), and there was only one problem, reddit is not hosting images - it wants an URL.</p>
+<p>It was a very simple thing that I wanted to do (it often starts like that) - to post a picture online, so other people can see how my Linux desktop environment looks like atm. Easy you would think, well, sure it is simple for some, not for me.. I&rsquo;ve got an image, a place to post it (<a href="https://www.reddit.com/r/unixporn">unixporn</a> subreddit), and there was only one problem, Reddit is not hosting images - it wants an URL.</p>
 
-<p>OK. There are many free image hosting, most people on unixporn use imgur.com, but that would be too easy.
-Instead I decided to finally kick off own website in a form of a blog. After 24 hours, here we are.</p>
+<p>OK. There are many free image hostings, most people on unixporn use imgur.com, but that would be too easy.
+Instead I decided to finally kick off my own website in a form of a blog. After 24 hours, here we are.</p>
 
-<h2 id="technology:aa77bbfd89a7b0ff10def205b9c08d51">Technology</h2>
+<h2 id="technology">Technology</h2>
 
 <p>This would not be a tech blog if I wouldn&rsquo;t explain what, how and why I did it.</p>
 
-<h3 id="requirements:aa77bbfd89a7b0ff10def205b9c08d51">Requirements</h3>
+<h3 id="requirements">Requirements</h3>
 
-<p>First of all, I didn&rsquo;t really want to pay for anything (at least not in the beginning). chrmod.net is suppose to be a blog for sharing stuff, not earning money.</p>
+<p>First of all, I didn&rsquo;t really want to pay for anything (at least not in the beginning). chrmod.net is supposed to be a blog for sharing stuff, not earning money.</p>
 
-<p>Second, with traditional approach (which I assume is wordpress + mysql + apache, etc), there is so much stuff to care about and to maintain.</p>
+<p>Second, with traditional approach (which I assume is WordPress + MySQL + Apache, etc.), there is so much stuff to care about and to maintain.</p>
 
 <p>Third, I do like to write code and tend to avoid CMSs as much as possible.</p>
 
-<h3 id="solution:aa77bbfd89a7b0ff10def205b9c08d51">Solution</h3>
+<h3 id="solution">Solution</h3>
 
-<p>The obvious way to go was to use some kind of static page generator and host it on github as apparently we&rsquo;re able to use for free for personal stuff (citing chastell on <a href="https://twitter.com/chastell/status/736926755999617024">this one</a>)</p>
+<p>The obvious way to go was to use some kind of static page generator and host it on GitHub as apparently we&rsquo;re able to use for free for personal stuff (citing chastell on <a href="https://twitter.com/chastell/status/736926755999617024">this one</a>).</p>
 
-<p>Also I really wanted to host my stuff over https. I knew there is letsencrypt, but to use it with github pages didn&rsquo;t look that easy or even possible.</p>
+<p>Also I really wanted to host my stuff over HTTPS. I knew there is letsencrypt, but to use it with GitHub Pages didn&rsquo;t look that easy or even possible.</p>
 
-<p>Fortunately I found kludsec that not only provide a free CDN but they also issued SSL certificate from letsencrypt automatically! Amazing!</p>
+<p>Fortunately I found Kloudsec, which not only provides a free CDN but also issues SSL certificate from letsencrypt automatically! Amazing!</p>
 
 <p>Summarizing the setup is:</p>
 
 <ul>
-<li>hosting: <a href="https://pages.github.com/">github pages</a></li>
-<li>CDN: <a href="https://kloudsec.com/">kludsec</a></li>
+<li>hosting: <a href="https://pages.github.com/">GitHub Pages</a></li>
+<li>CDN: <a href="https://kloudsec.com/">Kloudsec</a></li>
 <li>SSL: <a href="https://letsencrypt.org/">letsencrypt</a></li>
-<li>engine: <a href="http://gohugo.io/">hugo</a></li>
+<li>engine: <a href="http://gohugo.io/">Hugo</a></li>
 </ul>
 
-<h2 id="ending-note:aa77bbfd89a7b0ff10def205b9c08d51">Ending note</h2>
+<h2 id="ending-note">Ending note</h2>
 
 <p>Here is that damned screenshot which started all this mess:</p>
 
@@ -110,7 +110,7 @@ Instead I decided to finally kick off own website in a form of a blog. After 24 
 
 <p>What is on it, is a topic for another post!</p>
 
-<h1 id="day-0-update:aa77bbfd89a7b0ff10def205b9c08d51">Day 0 update</h1>
+<h1 id="day-0-update">Day 0 update</h1>
 
 <p>Just after publishing this blog post, I&rsquo;ve tried to share the screenshot on unixporn. And.. no success here. Today I&rsquo;ve learned that Reddit submitted URLs must come from a short list of approved domains (imgur.com is obviously on it). The whole reason that pushed me to start a blog was invalid.</p>
 
