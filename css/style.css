@@ -1,7 +1,5 @@
-/* Base16 Eighties Colorscheme by Chris Kempson (http://chriskempson.com) */
-
-.base00 { color: #2d2d2d; }
-.base01 { color: #393939; }
+.base00 { color: #282828; }
+.base01 { color: #3C3836; }
 .base02 { color: #515151; }
 .base03 { color: #747369; }
 .base04 { color: #a09f93; }
@@ -21,7 +19,7 @@
 
 body {
   margin: 0;
-  background-color: #2d2d2d;
+  background-color: #282828;
   color: #f2f0ec;
   line-height: 1.5;
   font-size: 100%;
@@ -71,7 +69,7 @@ article.single section,
 }
 
 header, footer {
-  background-color: #393939;
+  background-color: #3C3836;
   padding-top: 16px;
   padding-top: 1rem;
   padding-bottom: 16px;
@@ -365,7 +363,7 @@ article.single figure {
   margin-bottom: 16px;
   margin-bottom: 1rem;
   padding: 1em;
-  background-color: #393939;
+  background-color: #3C3836;
 }
 
 @media (max-width: 52em) {
