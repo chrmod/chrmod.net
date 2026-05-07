@@ -4,8 +4,7 @@ import Base from "../layouts/Base.astro";
 import { formatDateDots } from "../lib/format";
 
 const all = await getCollection("posts");
-const byDateDesc = (a: typeof all[number], b: typeof all[number]) =>
-  b.data.date.getTime() - a.data.date.getTime();
+const byDateDesc = (a, b) => b.data.date.getTime() - a.data.date.getTime();
 const posts = all.filter((p) => !p.data.draft).sort(byDateDesc);
 const drafts = all.filter((p) => p.data.draft).sort(byDateDesc);
 const total = posts.length + drafts.length;
@@ -27,7 +26,7 @@ const paletteItems = [
   { sigil: "⎙", label: "GitHub @chrmod", href: "https://github.com/chrmod" },
   { sigil: "✉", label: "Email", href: "mailto:hi@chrmod.net" },
   { sigil: "⌁", label: "RSS feed", href: "/feed.xml" },
-  { sigil: "?", label: "Show keyboard shortcuts", action: "help" as const, hint: "?" },
+  { sigil: "?", label: "Show keyboard shortcuts", action: "help", hint: "?" },
 ];
 
 const archiveHeader = `┌────────────────────────────────────────────────────────────────────┐

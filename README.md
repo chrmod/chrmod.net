@@ -11,7 +11,10 @@ Personal blog. Astro static site, deployed to Cloudflare Pages on `git push`.
 
 ## Develop
 
+Toolchain pinned via [mise](https://mise.jdx.dev). With mise installed:
+
 ```bash
+mise install     # installs Node from .mise.toml
 npm install
 npm run dev      # http://localhost:4321
 npm run build    # output → dist/
@@ -56,7 +59,7 @@ One-time setup:
    - **Framework preset**: Astro
    - **Build command**: `npm run build`
    - **Build output directory**: `dist`
-   - **Node version** (env var `NODE_VERSION`): `20`
+   - **Node version** (env var `NODE_VERSION`): `24` (or any current LTS)
 5. Save and deploy.
 
 After that, every push to `main` triggers a build. Pull request previews deploy to a unique URL per branch.

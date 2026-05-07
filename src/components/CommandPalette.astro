@@ -1,18 +1,5 @@
 ---
-type Item = {
-  sigil: string;
-  label: string;
-  href?: string;
-  action?: "help" | "top" | "bottom";
-  hint?: string;
-};
-
-interface Props {
-  items: Item[];
-  enableScrollKeys?: boolean;
-}
-
-const { items, enableScrollKeys = false } = Astro.props as Props;
+const { items, enableScrollKeys = false } = Astro.props;
 ---
 
 <div class="kbar-scrim" id="kbar" role="dialog" aria-label="Command palette" aria-modal="true">

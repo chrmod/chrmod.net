@@ -3,19 +3,6 @@ import "../styles/global.css";
 import Topbar from "../components/Topbar.astro";
 import CommandPalette from "../components/CommandPalette.astro";
 
-interface Props {
-  title: string;
-  description?: string;
-  paletteItems: Array<{
-    sigil: string;
-    label: string;
-    href?: string;
-    action?: "help" | "top" | "bottom";
-    hint?: string;
-  }>;
-  enableScrollKeys?: boolean;
-}
-
 const {
   title,
   description = "chrmod — notes on browsers, the open web platform, and the long road between them.",

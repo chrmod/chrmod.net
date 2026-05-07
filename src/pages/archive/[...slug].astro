@@ -16,14 +16,14 @@ const { Content } = await render(post);
 
 const paletteItems = [
   { sigil: "⌂", label: "Home", href: "/", hint: "g h" },
-  { sigil: "↑", label: "Top of post", action: "top" as const, hint: "g g" },
-  { sigil: "↓", label: "Bottom of post", action: "bottom" as const, hint: "G" },
+  { sigil: "↑", label: "Top of post", action: "top", hint: "g g" },
+  { sigil: "↓", label: "Bottom of post", action: "bottom", hint: "G" },
   { sigil: "⎙", label: "GitHub @chrmod", href: "https://github.com/chrmod" },
   ...(post.data.hnUrl
     ? [{ sigil: "Y", label: "Discuss on Hacker News", href: post.data.hnUrl }]
     : []),
   { sigil: "✉", label: "Email", href: "mailto:hi@chrmod.net" },
-  { sigil: "?", label: "Show keyboard shortcuts", action: "help" as const, hint: "?" },
+  { sigil: "?", label: "Show keyboard shortcuts", action: "help", hint: "?" },
 ];
 ---
 
