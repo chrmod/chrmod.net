@@ -1,0 +1,174 @@
+---
+type Item = {
+  sigil: string;
+  label: string;
+  href?: string;
+  action?: "help" | "top" | "bottom";
+  hint?: string;
+};
+
+interface Props {
+  items: Item[];
+  enableScrollKeys?: boolean;
+}
+
+const { items, enableScrollKeys = false } = Astro.props as Props;
+---
+
+<div class="kbar-scrim" id="kbar" role="dialog" aria-label="Command palette" aria-modal="true">
+  <div class="kbar">
+    <input id="kbar-input" placeholder="type a command, or just a few letters…" autocomplete="off" />
+    <ul id="kbar-list" role="listbox"></ul>
+  </div>
+</div>
+
+<script is:inline define:vars={{ items, enableScrollKeys }}>
+  (() => {
+    const scrim = document.getElementById("kbar");
+    const input = document.getElementById("kbar-input");
+    const list = document.getElementById("kbar-list");
+    if (!scrim || !input || !list) return;
+    let sel = 0;
+
+    function escapeHtml(s) {
+      return String(s)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function render(filter = "") {
+      const f = filter.trim().toLowerCase();
+      const rows = items.filter((it) => !f || it.label.toLowerCase().includes(f));
+      list.innerHTML = rows
+        .map(
+          (r, i) => `
+        <li role="option" data-i="${i}" aria-selected="${i === sel}">
+          <span class="sigil">${escapeHtml(r.sigil)}</span>
+          <span>${escapeHtml(r.label)}</span>
+          <span class="hint">${escapeHtml(r.hint || "")}</span>
+        </li>`
+        )
+        .join("");
+      list.querySelectorAll("li").forEach((li) => {
+        li.addEventListener("mouseenter", () => {
+          sel = +li.dataset.i;
+          render(input.value);
+        });
+        li.addEventListener("click", () => activate(rows[+li.dataset.i]));
+      });
+      return rows;
+    }
+
+    function activate(row) {
+      if (!row) return;
+      if (row.action === "help") {
+        showHelp();
+        close();
+        return;
+      }
+      if (row.action === "top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        close();
+        return;
+      }
+      if (row.action === "bottom") {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+        close();
+        return;
+      }
+      if (!row.href) return;
+      if (row.href.startsWith("http") || row.href.startsWith("mailto:")) {
+        window.open(row.href, "_blank", "noopener");
+      } else {
+        location.href = row.href;
+      }
+      close();
+    }
+
+    function open() {
+      scrim.classList.add("open");
+      input.value = "";
+      sel = 0;
+      render();
+      setTimeout(() => input.focus(), 10);
+    }
+    function close() {
+      scrim.classList.remove("open");
+    }
+
+    function showHelp() {
+      const lines = [
+        "Keyboard shortcuts",
+        "",
+        "  /        open command palette",
+        "  g h      go home",
+      ];
+      if (enableScrollKeys) {
+        lines.push("  g g      top of post");
+        lines.push("  G        bottom of post");
+      }
+      lines.push("  ?        this help");
+      lines.push("  esc      close palette");
+      alert(lines.join("\n"));
+    }
+
+    let gPending = false;
+    let gTimer;
+    document.addEventListener("keydown", (e) => {
+      if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") {
+        if (e.key === "Escape") close();
+        return;
+      }
+      if (e.key === "/") {
+        e.preventDefault();
+        open();
+      } else if (e.key === "?") {
+        e.preventDefault();
+        showHelp();
+      } else if (enableScrollKeys && e.key === "G") {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+      } else if (e.key === "g") {
+        if (enableScrollKeys && gPending) {
+          gPending = false;
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          gPending = true;
+          clearTimeout(gTimer);
+          gTimer = setTimeout(() => (gPending = false), 800);
+        }
+      } else if (gPending && e.key === "h") {
+        gPending = false;
+        location.href = "/";
+      } else if (e.key === "Escape") {
+        close();
+      }
+    });
+
+    input.addEventListener("keydown", (e) => {
+      const rows = render(input.value);
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        sel = Math.min(sel + 1, rows.length - 1);
+        render(input.value);
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        sel = Math.max(sel - 1, 0);
+        render(input.value);
+      } else if (e.key === "Enter") {
+        e.preventDefault();
+        activate(rows[sel]);
+      } else if (e.key === "Escape") {
+        close();
+      }
+    });
+    input.addEventListener("input", () => {
+      sel = 0;
+      render(input.value);
+    });
+    scrim.addEventListener("click", (e) => {
+      if (e.target === scrim) close();
+    });
+  })();
+</script>

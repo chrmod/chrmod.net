@@ -1,0 +1,17 @@
+---
+const { showSearchHint = true } = Astro.props as { showSearchHint?: boolean };
+---
+
+<header class="topbar dotmatrix" data-screen-label="Topbar">
+  <a class="brand" href="/">
+    <span class="prompt">~/</span><span>chrmod</span>
+  </a>
+  <nav>
+    <a href="/#archive">archive</a>
+    <a href="https://github.com/chrmod" target="_blank" rel="noopener">github</a>
+    <a href="/feed.xml">rss</a>
+  </nav>
+  {showSearchHint && (
+    <span class="kbd"><kbd>/</kbd> search</span>
+  )}
+</header>

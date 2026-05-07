@@ -1,0 +1,74 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import { formatDateDots } from "../../lib/format";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts", ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const paletteItems = [
+  { sigil: "⌂", label: "Home", href: "/", hint: "g h" },
+  { sigil: "↑", label: "Top of post", action: "top" as const, hint: "g g" },
+  { sigil: "↓", label: "Bottom of post", action: "bottom" as const, hint: "G" },
+  { sigil: "⎙", label: "GitHub @chrmod", href: "https://github.com/chrmod" },
+  ...(post.data.hnUrl
+    ? [{ sigil: "Y", label: "Discuss on Hacker News", href: post.data.hnUrl }]
+    : []),
+  { sigil: "✉", label: "Email", href: "mailto:hi@chrmod.net" },
+  { sigil: "?", label: "Show keyboard shortcuts", action: "help" as const, hint: "?" },
+];
+---
+
+<Base
+  title={`${post.data.title} — chrmod`}
+  description={post.data.description}
+  paletteItems={paletteItems}
+  enableScrollKeys={true}
+>
+  <main class="wrap post" data-screen-label={`Post · ${post.id}`}>
+    <div class="crumbs">
+      <a href="/">~/chrmod</a> &nbsp;/&nbsp; archive &nbsp;/&nbsp; <span>{post.id}</span>
+    </div>
+
+    <h1 class="title">{post.data.title}</h1>
+
+    <div class="meta-strip">
+      <span>{formatDateDots(post.data.date)}</span>
+      {post.data.readTime && (
+        <>
+          <span class="dot">┄</span>
+          <span>{post.data.readTime}</span>
+        </>
+      )}
+      {post.data.tags.length > 0 && (
+        <>
+          <span class="dot">┄</span>
+          <span class="green">tags:</span>
+          <span>{post.data.tags.join(" · ")}</span>
+        </>
+      )}
+    </div>
+
+    <article>
+      <Content />
+
+      <pre class="ascii endmark" aria-hidden="true">·   ·   ·   ·   ·</pre>
+
+      {post.data.hnUrl && (
+        <div class="hn-strip">
+          <span class="badge">Y</span>
+          <span>Discuss this post on Hacker News</span>
+          <a href={post.data.hnUrl} target="_blank" rel="noopener">submit / open thread →</a>
+        </div>
+      )}
+    </article>
+  </main>
+</Base>

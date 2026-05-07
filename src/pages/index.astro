@@ -1,0 +1,108 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import { formatDateDots } from "../lib/format";
+
+const all = await getCollection("posts");
+const byDateDesc = (a: typeof all[number], b: typeof all[number]) =>
+  b.data.date.getTime() - a.data.date.getTime();
+const posts = all.filter((p) => !p.data.draft).sort(byDateDesc);
+const drafts = all.filter((p) => p.data.draft).sort(byDateDesc);
+const total = posts.length + drafts.length;
+
+const latest = posts[0];
+
+const paletteItems = [
+  ...(latest
+    ? [
+        {
+          sigil: "→",
+          label: `Latest post: ${latest.data.title}`,
+          href: `/archive/${latest.id}/`,
+          hint: "enter",
+        },
+      ]
+    : []),
+  { sigil: "⌂", label: "Home", href: "/", hint: "g h" },
+  { sigil: "⎙", label: "GitHub @chrmod", href: "https://github.com/chrmod" },
+  { sigil: "✉", label: "Email", href: "mailto:hi@chrmod.net" },
+  { sigil: "⌁", label: "RSS feed", href: "/feed.xml" },
+  { sigil: "?", label: "Show keyboard shortcuts", action: "help" as const, hint: "?" },
+];
+
+const archiveHeader = `┌────────────────────────────────────────────────────────────────────┐
+│ ARCHIVE  ·  ${String(total).padStart(1, " ")} entries  ·  newest first                             │
+└────────────────────────────────────────────────────────────────────┘`;
+
+const archiveFooter = "┄".repeat(68);
+---
+
+<Base
+  title="chrmod — notes on the open web"
+  description="chrmod — notes on browsers, the open web platform, and the long road between them."
+  paletteItems={paletteItems}
+>
+  <main class="wrap" data-screen-label="Home">
+    <section class="masthead">
+      <h1>chrmod<span class="cursor" aria-hidden="true"></span></h1>
+      <p class="bio">
+        Twenty years building for the open web. Browsers, extensions, search, ads.
+        Currently tracking the trackers at <a href="https://ghostery.com">Ghostery</a>;
+        previously building browsers at <a href="https://cliqz.com">Cliqz</a>.
+        Here I write about what survives — and what should.
+      </p>
+      <div class="links">
+        <a href="https://github.com/chrmod" target="_blank" rel="noopener">github.com/chrmod</a>
+        <a href="/feed.xml">rss</a>
+        <a href="mailto:hi@chrmod.net">email</a>
+      </div>
+    </section>
+
+    <pre class="ascii" aria-hidden="true">{archiveHeader}</pre>
+
+    <ol class="postlist" id="archive">
+      {posts.map((p) => (
+        <li>
+          <span class="date">{formatDateDots(p.data.date)}</span>
+          <div>
+            <h2 class="title">
+              <a href={`/archive/${p.id}/`}>{p.data.title}</a>
+            </h2>
+            <p class="excerpt">{p.data.excerpt}</p>
+            <div class="meta">
+              {p.data.tags.map((t, i) => (
+                <>
+                  {i > 0 && <span> · </span>}
+                  <span class="tag">{t}</span>
+                </>
+              ))}
+              {p.data.readTime && <span> · {p.data.readTime}</span>}
+            </div>
+          </div>
+        </li>
+      ))}
+      {drafts.map((p) => (
+        <li>
+          <span class="date">— · — · —</span>
+          <div>
+            <h2 class="title" style="color:var(--ink-3)">{p.data.title}</h2>
+            <p class="excerpt" style="color:var(--ink-3)">{p.data.excerpt}</p>
+            <div class="meta">draft</div>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <pre class="ascii" aria-hidden="true">{archiveFooter}</pre>
+
+    <footer class="foot">
+      <div class="row">
+        <span>© {new Date().getFullYear()} chrmod</span>
+        <span>·</span>
+        <span>hand-written HTML, no trackers</span>
+        <span>·</span>
+        <a href="/feed.xml">subscribe via rss</a>
+      </div>
+    </footer>
+  </main>
+</Base>

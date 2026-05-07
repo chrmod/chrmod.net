@@ -1,0 +1,41 @@
+---
+import "../styles/global.css";
+import Topbar from "../components/Topbar.astro";
+import CommandPalette from "../components/CommandPalette.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  paletteItems: Array<{
+    sigil: string;
+    label: string;
+    href?: string;
+    action?: "help" | "top" | "bottom";
+    hint?: string;
+  }>;
+  enableScrollKeys?: boolean;
+}
+
+const {
+  title,
+  description = "chrmod — notes on browsers, the open web platform, and the long road between them.",
+  paletteItems,
+  enableScrollKeys = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="alternate" type="application/rss+xml" title="chrmod" href="/feed.xml" />
+  </head>
+  <body>
+    <Topbar />
+    <slot />
+    <CommandPalette items={paletteItems} enableScrollKeys={enableScrollKeys} />
+  </body>
+</html>
