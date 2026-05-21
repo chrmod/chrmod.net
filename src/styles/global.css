@@ -295,10 +295,16 @@ hr.rule {
   font-size: 18px;
   line-height: 1.72;
   color: var(--ink);
-  max-width: var(--measure);
 }
-.post article > * { margin-block: 1.1em; }
+.post article > * { margin-block: 1.1em; max-width: var(--measure); }
 .post article > :first-child { margin-top: 0; }
+.post article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
 .post article p { margin: 1.1em 0; }
 .post article a {
   color: var(--ink);
