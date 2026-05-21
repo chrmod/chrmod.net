@@ -4,7 +4,7 @@ description: "Servo shipped 0.1.0 on crates.io. The EU made Apple allow custom b
 date: 2026-05-07
 tags: ["browsers", "servo", "ios"]
 readTime: "12 min read"
-draft: false
+draft: true
 excerpt: "Servo just shipped 0.1.0 on crates.io. The EU just made Apple let us ship our own engines on iOS. I had two evenings free."
 hnUrl: "https://news.ycombinator.com/submit"
 ---

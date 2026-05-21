@@ -7,7 +7,7 @@ const all = await getCollection("posts");
 const byDateDesc = (a, b) => b.data.date.getTime() - a.data.date.getTime();
 const posts = all.filter((p) => !p.data.draft).sort(byDateDesc);
 const drafts = all.filter((p) => p.data.draft).sort(byDateDesc);
-const total = posts.length + drafts.length;
+const total = posts.length + (import.meta.env.DEV ? drafts.length : 0);
 
 const latest = posts[0];
 
@@ -80,7 +80,7 @@ const archiveFooter = "┄".repeat(68);
           </div>
         </li>
       ))}
-      {drafts.map((p) => (
+      {import.meta.env.DEV && drafts.map((p) => (
         <li>
           <span class="date">— · — · —</span>
           <div>
