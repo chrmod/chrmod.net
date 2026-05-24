@@ -1,5 +1,5 @@
 ---
-title: "A cookie banner can make a vision model read the wrong page"
+title: "Cookie banners make vision models hallucinate webpage content"
 description: "9 US news sites × 2 variants × 10 trials = 180 vision-API calls. With cookie banners on screen, the model returns empty arrays a third of the time — or worse, invents plausible-sounding headlines."
 date: 2026-05-21
 tags: ["ai", "vision", "browsers", "ghostery", "scraping"]
@@ -320,7 +320,7 @@ excerpt: "When a cookie banner is on screen at screenshot time, vision models of
 <div class="cookies-post">
 <div class="cookies-post-inner">
 
-<h1>A cookie banner can make a vision model read the wrong page</h1>
+<h1>Cookie banners don't just block vision models—they cause them to hallucinate</h1>
 <p class="meta">2026-05-21. 9 US news sites × 2 variants × 10 trials = 180 calls. Anthropic Sonnet 4.5 vision API. Methodology at the bottom.</p>
 
 <p>When a cookie banner is on screen at the moment you screenshot a webpage and feed the screenshot to a vision model, the model often doesn't just fail to extract the headlines — it confidently invents plausible-sounding ones. Same page, same model, banner removed: it gets the headlines right.</p>
