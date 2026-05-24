@@ -6,6 +6,7 @@ tags: ["ai", "vision", "browsers", "ghostery", "scraping"]
 readTime: "10 min read"
 draft: false
 excerpt: "When a cookie banner is on screen at screenshot time, vision models often invent plausible headlines instead of failing loudly. 180 API calls across 9 news sites quantify it."
+hnUrl: "https://news.ycombinator.com/item?id=48256478"
 ---
 
 <style>
