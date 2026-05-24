@@ -602,6 +602,8 @@ hnUrl: "https://news.ycombinator.com/item?id=48256478"
 
 <h2>Methodology</h2>
 
+<p>Source code, raw API outputs per call, and all 180 screenshots are at <a href="https://github.com/ghostery/researches/tree/main/vlm-cookie-banner-may-2026">ghostery/researches/vlm-cookie-banner-may-2026</a>.</p>
+
 <ul>
   <li><strong>Model:</strong> <code>claude-sonnet-4-5-20250929</code>, default temperature, <code>max_tokens=2048</code>, one API call per screenshot.</li>
   <li><strong>Setup:</strong> Chrome for Testing 148 + chromedriver, fresh isolated profile per trial, 5s settle, anti-bot fingerprints suppressed (<code>navigator.webdriver === false</code>, <code>--disable-blink-features=AutomationControlled</code>) so CMPs serve us the same payload they serve a human.</li>
