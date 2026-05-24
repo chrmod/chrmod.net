@@ -4,7 +4,7 @@ description: "First post. The accidental origin story of chrmod.net — Hugo, Gi
 date: 2016-05-29
 tags: ["meta"]
 readTime: "3 min read"
-draft: false
+draft: true
 excerpt: "First post. The accidental origin story of chrmod.net — Hugo, GitHub Pages, and a screenshot Reddit refused to take."
 ---
 
